@@ -59,8 +59,32 @@ module rounded_sqare(x=10, y=10, r=1, fn=10){
   square(size=[x*fn, y*fn], center=false);
 }
 
-module rounded_cube(size, r, center=false, fn=20){
-  rounded_cube_z(size, r, center=center, fn=fn);
+module rounded_cube(size, r, center=false, fn=10){
+// module rounded_cube(size, r, center=false, fn=20){
+  // rounded_cube_z(size, r, center=center, fn=fn);
+  x=size[0];y=size[1];z=size[2];
+  if(center){
+    translate([-x/2,-y/2,-z/2])
+    rounded_cube_internal([x,y,z],r,fn);
+  }else{
+    rounded_cube_internal([x,y,z],r,fn);
+  }
+}
+module rounded_cube_internal(size, r, fn){
+  //copied from: https://www.reddit.com/r/openscad/comments/37fx6n/comment/crmeyas/?utm_source=share&utm_medium=web2x&context=3
+  x=size[0];y=size[1];z=size[2];
+  hull() 
+  for(p=[[r,r,r],
+         [r,r,z-r],
+         [r,y-r,r],
+         [r,y-r,z-r],
+         [x-r,r,r],
+         [x-r,y-r,r],
+         [x-r,r,z-r],
+         [x-r,y-r,z-r]
+        ])
+  translate(p)
+  sphere(r, $fn=fn);
 }
 
 module rounded_cylinder(r, h, n, fn=64) {
