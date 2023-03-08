@@ -30,3 +30,6 @@ module twenty_one(){
   rotate([180,0,0])
   polygon(points21);
 }
+
+function is_int(number) = floor(number) == number;
+function is_even(number) = number%2 == 0;
