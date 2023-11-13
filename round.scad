@@ -19,10 +19,10 @@ module rounded_cube_x_raw(size, r, fn){
 module rounded_cube_y(size, r=2, center=false, fn=20){
   x=size[0];y=size[1];z=size[2];
   if(center){
-    translate([0,0,-z/2])
+    translate([-x/2,-y/2,0])
     rounded_cube_y_raw([x,y,z],r,fn);
   }else{
-    translate([x/2,y/2,0])
+    translate([0,0,z/2])
     rounded_cube_y_raw([x,y,z],r,fn);
   }
 }
@@ -32,7 +32,7 @@ module rounded_cube_y_raw(size, r, fn){
   x=size[0];y=size[1];z=size[2];
   translate([0,0,z/2])
   rotate([0,90,0])
-  rounded_cube_z([z, y, x], r, fn);
+  rounded_cube_z_raw([z, y, x], r, fn);
 }
 
 
@@ -43,6 +43,35 @@ module rounded_cube_z(size, r=2, center=false, fn=20){
     rounded_cube_z_raw([x,y,z],r,fn);
   }else{
     rounded_cube_z_raw([x,y,z],r,fn);
+  }
+}
+module rounded_cube_xy(size, r=2, center=false, fn=20){
+  x=size[0];y=size[1];z=size[2];
+  intersection(){
+    rounded_cube_x([x,y,z],r=r,center=center,fn=fn);
+    rounded_cube_y([x,y,z],r=r,center=center,fn=fn);
+  }
+}
+module rounded_cube_yz(size, r=2, center=false, fn=20){
+  x=size[0];y=size[1];z=size[2];
+  intersection(){
+    rounded_cube_y([x,y,z],r=r,center=center,fn=fn);
+    rounded_cube_z([x,y,z],r=r,center=center,fn=fn);
+  }
+}
+module rounded_cube_zx(size, r=2, center=false, fn=20){
+  x=size[0];y=size[1];z=size[2];
+  intersection(){
+    rounded_cube_x([x,y,z],r=r,center=center,fn=fn);
+    rounded_cube_z([x,y,z],r=r,center=center,fn=fn);
+  }
+}
+module rounded_cube_xyz(size, r=2, center=false, fn=20){
+  x=size[0];y=size[1];z=size[2];
+  intersection(){
+    rounded_cube_x([x,y,z],r=r,center=center,fn=fn);
+    rounded_cube_y([x,y,z],r=r,center=center,fn=fn);
+    rounded_cube_z([x,y,z],r=r,center=center,fn=fn);
   }
 }
 
