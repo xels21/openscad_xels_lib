@@ -81,11 +81,12 @@ module rounded_cube_z_raw(size, r=2, fn=20){
   rounded_sqare(x=x, y=y, r=r, fn=fn);
 }
 
-module rounded_sqare(x=10, y=10, r=1, fn=10){
-  scale(1/fn)
+module rounded_sqare(x=10, y=10, r=1, fn=10, center=false){
+  scale([1/fn,1/fn,1])
   offset(r*fn)
   offset(-r*fn)
-  square(size=[x*fn, y*fn], center=false);
+  scale([fn,fn,1])
+  square(size=[x, y], center=center);
 }
 
 module rounded_cube(size, r, center=false, fn=10){
