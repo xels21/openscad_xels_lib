@@ -11,6 +11,17 @@ module ellipse_sphere(x=20, y=10, sphere_d=1, acc=15, fn=30){
   }
 }
 
+module copy_mirror(vec){
+    children();
+    mirror(vec)
+    children();
+}
+module copy_rotate(degrees,vec){
+    children();
+    rotate(degrees, vec)
+    children();
+}
+
 module twenty_one(){
   points21 = [[0.311,0],
               [0.574,0.263],
