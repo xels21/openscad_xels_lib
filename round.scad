@@ -80,8 +80,12 @@ module rounded_cube_z_raw(size, r=2, fn=20){
   linear_extrude(z)
   rounded_sqare(x=x, y=y, r=r, fn=fn);
 }
-
+// typo
 module rounded_sqare(size, x=10, y=10, r=1, fn=10, center=false){
+  rounded_square(size=size, x=x, y=y, r=r, fn=fn, center=center);
+}
+
+module rounded_square(size, x=10, y=10, r=1, fn=10, center=false){
   x_int=(len(size) == 2) ? size[0] : x;
   y_int=(len(size) == 2) ? size[1] : y;
 
