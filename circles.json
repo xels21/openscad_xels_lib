@@ -1,0 +1,15 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "_column": "4",
+            "_fn": "8",
+            "_gap": "0",
+            "_n": "6",
+            "_off_deg": "0",
+            "_r": "10",
+            "_rows": "4",
+            "_t": "0.5"
+        }
+    }
+}
